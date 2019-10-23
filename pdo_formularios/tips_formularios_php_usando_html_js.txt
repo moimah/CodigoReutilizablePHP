@@ -1,0 +1,78 @@
+
+TIPS DE PHP:
+
+
+Variables: $nombre_variable = “contenido”;
+
+Constantes: define(“nom_constante”, “contenido”);
+
+Arrays: $mi_array = array("hola", "moises", "Abreu");
+
+Los arrays pueden contener diferentes tipos de valores
+
+Arrays: $mi_array = array("hola", "moises", "Abreu");
+
+Sessiones: $_SESSION['mi_sesion'] = "valor";
+Es necesario sesion_star(); Cada vez que usemos las sesiones
+
+Cookies: setcookie("name", "valor",time()+60*30);
+
+Incluir pagina php: include"script2.php
+
+Redireccionar a otra página: header('Location: index.php');
+
+Enviar parámetros:’url.php?param=$var&param2=$var2’
+
+Recibir parámetros: $_GET[‘param’]
+
+Imprimir texto/variables/html: echo “<p>Esto es un párrafo</p>;
+
+Imprimir array: print_r($v_array);
+
+Tamaño de array: count($v_array);
+
+Obtener variables Form POST/GET: $_POST[‘name’] | $_GET[‘name’];
+
+Verificar que se ha enviado formulario: isset($_POST[‘enviar’]);
+
+TIPS DE FORMULARIOS HTML:
+
+<form> method=”post|get”; action=’redireccionar.php’---> *Validacion JS
+
+<input> Type: (text, number, submit, button, select) Value=”$variable”
+Los select se acompañan con option y el value es dentro del select
+Otros: required, readonly, minlenght maxlenght, hidden
+
+*Doble recepción:
+$cod_tienda = “”
+if (isset($_POST['enviar'])){
+$cod_tienda = $_POST['cod_tienda'];
+}else{
+$cod_tienda = $_GET['param1'];
+}
+
+CONFIRMAR CON JS - FORMULARIO:
+
+1º Es necesario cambiar el submit por un button:
+<input type='button' onclick='confirmar()' name='enviar' value='enviar'>
+
+2º Action obligado tiene que redireccionar a php que hará la modificación
+<form method='post' id='form_modificar' action='modificar.php'>
+
+3ºScript:
+
+function confirmar(){
+var formulario = document.getElementById("form_modificar");
+var nombre = formulario[1].value;
+if (confirm('Seguro desea modificar: ' + nombre)) {
+console.log(formulario.value);
+formulario.submit();
+}
+}
+
+4º ****Opcional**** Script de retardo para redireccionar(Poner al final del php); 
+<script>
+setTimeout(function() {
+window.location = "visualizar.php";
+}, 2500);
+</script>
